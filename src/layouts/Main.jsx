@@ -5,9 +5,11 @@ import Footer from "../components/shared/Footer/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <div className="">
       <Header></Header>
-      <Outlet></Outlet>
+      <div className="min-h-[calc(100vh-64px)]">
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );

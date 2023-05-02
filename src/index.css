@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+    @apply font-medium tracking-wide text-[#ff4a52] bg-white
+}
+
+.default {
+    @apply font-medium tracking-wide text-black bg-white
+}
+
+.my-btn {
+    @apply bg-[#ff4a52] py-3 px-6 rounded-[45px] font-semibold text-white
+}
