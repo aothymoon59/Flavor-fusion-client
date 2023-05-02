@@ -1,9 +1,53 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const { createUser } = useContext(AuthContext);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    } else if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Password must contain at least one uppercase");
+      return;
+    } else if (!/(?=.*[!@#$&*])/.test(password)) {
+      setError("Password must contain at least one special character");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        setSuccess("User has been created successfully");
+        toast.success("User has been created successfully");
+        setError("");
+        form.reset();
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setError(err.message);
+        setSuccess("");
+        toast.error(err.message);
+      });
+
+    console.log(name, email, photo, password);
+  };
+
   return (
     <div
       className=" min-h-screen bg-[#000000] bg-opacity-[0.7] bg-blend-multiply bg-cover bg-center flex justify-center items-center"
@@ -11,11 +55,15 @@ const Register = () => {
         backgroundImage: `url(https://i.ibb.co/DKS8v23/pexels-photo-1765005.webp)`,
       }}
     >
-      <div className="w-[95%] p-5 max-w-md bg-red-600 bg-opacity-[0.5] rounded-2xl card-shadow">
-        <h2 className="text-center text-white text-2xl sm:text-3xl font-semibold mb-5 sm:mb-10">
+      <div className="w-[95%] px-5 py-7 max-w-md bg-blue-400 bg-opacity-[0.5] rounded-2xl card-shadow">
+        <h2 className="text-center text-white text-2xl sm:text-3xl font-semibold mb-5 sm:mb-7">
           Sign Up
         </h2>
-        <form>
+        <div className="h-10">
+          <p className="text-success text-center">{success}</p>
+          <p className="text-red-600 text-center">{error}</p>
+        </div>
+        <form onSubmit={handleRegister}>
           <div className="form-control w-full mb-3">
             <label className="label">
               <span className="label-text text-white">Name</span>
@@ -40,7 +88,19 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-control w-full mb-3 relative">
+          <div className="form-control w-full mb-3">
+            <label className="label">
+              <span className="label-text text-white">Photo Url</span>
+            </label>
+            <input
+              type="text"
+              name="photo"
+              placeholder="Your photo URL"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div className="form-control w-full mb-7 relative">
             <label className="label">
               <span className="label-text text-white">Password</span>
             </label>
@@ -58,46 +118,16 @@ const Register = () => {
               <small>{showPass ? <FaEye /> : <FaEyeSlash />}</small>
             </p>
           </div>
-          <div className="form-control w-full mb-5">
-            <label className="label">
-              <span className="label-text text-white">Photo Url</span>
-            </label>
-            <input
-              type="text"
-              name="photo"
-              placeholder="Your photo URL"
-              className="input input-bordered w-full"
-              required
-            />
-          </div>
           <button className="form-btn" type="submit">
             Register
           </button>
           <p className="mt-5 text-center text-white">
             Already have an account?{" "}
-            <Link className="text-blue-400" to="/login">
+            <Link className="text-blue-800 font-semibold" to="/login">
               Login
             </Link>
           </p>
         </form>
-        <div className="flex gap-4 items-center my-6">
-          <div className="border border-slate-400 w-full h-0"></div>
-          <span className="text-slate-400">Or</span>
-          <div className="border border-slate-400  w-full h-0"></div>
-        </div>
-        <div className="mt-4">
-          <h2 className="text-center text-xl font-semibold my-4 text-white">
-            Login With
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <button className="social-btn btn-success">
-              <FaGoogle className="mr-2" title="Google" /> Google
-            </button>
-            <button className="social-btn btn-info">
-              <FaGithub className="mr-2" title="Twitter" /> Github
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const Login = () => {
         backgroundImage: `url(https://i.ibb.co/DKS8v23/pexels-photo-1765005.webp)`,
       }}
     >
-      <div className="w-[95%] p-5 max-w-md bg-red-600 bg-opacity-[0.5] rounded-2xl card-shadow">
+      <div className="w-[95%] p-5 max-w-md bg-blue-400 bg-opacity-[0.5] rounded-2xl card-shadow">
         <h2 className="text-center text-white text-2xl sm:text-3xl font-semibold mb-5 sm:mb-10">
           Sign In
         </h2>
@@ -46,7 +46,7 @@ const Login = () => {
               <small>{showPass ? <FaEye /> : <FaEyeSlash />}</small>
             </p>
             <p className="p-1 text-sm">
-              <Link className="underline text-blue-400">
+              <Link className="underline text-error font-medium">
                 Forgotten Password?
               </Link>
             </p>
@@ -56,7 +56,7 @@ const Login = () => {
           </button>
           <p className="mt-5 text-center text-white">
             New User?{" "}
-            <Link className="text-blue-400" to="/register">
+            <Link className="text-blue-800 font-semibold" to="/register">
               Register
             </Link>
           </p>
