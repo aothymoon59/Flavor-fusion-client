@@ -1,9 +1,61 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // sign in with email and password
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
+        setSuccess("Successfully login");
+        toast.success("Successfully login");
+        setError("");
+      })
+      .catch((err) => {
+        let errorMessage = err.message;
+        if (errorMessage == "Firebase: Error (auth/wrong-password).") {
+          errorMessage = "Wrong password! Please try again";
+        } else if (errorMessage == "Firebase: Error (auth/user-not-found).") {
+          errorMessage = "User not found!";
+        }
+        console.log(errorMessage);
+        setError(errorMessage);
+        setSuccess("");
+        toast.error(errorMessage);
+      });
+  };
+
+  // sign in with google pop up
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        setSuccess("Successfully login With Google");
+        setError("");
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setError(err.message);
+        setSuccess("");
+      });
+  };
+
   return (
     <div
       className=" min-h-screen bg-[#000000] bg-opacity-[0.7] bg-blend-multiply bg-cover bg-center flex justify-center items-center"
@@ -12,10 +64,14 @@ const Login = () => {
       }}
     >
       <div className="w-[95%] p-5 max-w-md bg-blue-400 bg-opacity-[0.5] rounded-2xl card-shadow">
-        <h2 className="text-center text-white text-2xl sm:text-3xl font-semibold mb-5 sm:mb-10">
+        <h2 className="text-center text-white text-2xl sm:text-3xl font-semibold mb-5 sm:mb-7">
           Sign In
         </h2>
-        <form>
+        <div className="h-10">
+          <p className="text-success text-center">{success}</p>
+          <p className="text-error text-center">{error}</p>
+        </div>
+        <form onSubmit={handleSignIn}>
           <div className="form-control w-full mb-3">
             <label className="label">
               <span className="label-text text-white">Email Address</span>
@@ -71,7 +127,10 @@ const Login = () => {
             Login With
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            <button className="social-btn btn-success">
+            <button
+              onClick={handleGoogleSignIn}
+              className="social-btn btn-success"
+            >
               <FaGoogle className="mr-2" title="Google" /> Google
             </button>
             <button className="social-btn btn-info">

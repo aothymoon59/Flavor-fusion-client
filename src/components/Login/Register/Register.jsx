@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import toast from "react-hot-toast";
@@ -9,7 +9,9 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  // Handle registration
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,6 +20,7 @@ const Register = () => {
     const photo = form.photo.value;
     const password = form.password.value;
 
+    // password validation
     if (password.length < 6) {
       setError("Password must be at least 6 characters long");
       return;
@@ -29,6 +32,7 @@ const Register = () => {
       return;
     }
 
+    // create user by email and password
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
@@ -37,6 +41,7 @@ const Register = () => {
         toast.success("User has been created successfully");
         setError("");
         form.reset();
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err.message);
@@ -61,7 +66,7 @@ const Register = () => {
         </h2>
         <div className="h-10">
           <p className="text-success text-center">{success}</p>
-          <p className="text-red-600 text-center">{error}</p>
+          <p className="text-error text-center">{error}</p>
         </div>
         <form onSubmit={handleRegister}>
           <div className="form-control w-full mb-3">
