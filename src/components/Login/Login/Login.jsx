@@ -8,7 +8,8 @@ const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const { signIn, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ const Login = () => {
         console.log(loggedUser);
         form.reset();
         setSuccess("Successfully login");
+        console.log(loggedUser);
         toast.success("Successfully login");
         setError("");
       })
@@ -45,13 +47,28 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         setSuccess("Successfully login With Google");
+        toast.success("Successfully login With Google");
         setError("");
       })
       .catch((err) => {
-        console.log(err.message);
         setError(err.message);
+        toast.error(err.message);
+        setSuccess("");
+      });
+  };
+  // sign in with github pop up
+  const handleGithubSignIn = () => {
+    signInWithGithub()
+      .then((result) => {
+        const loggedUser = result.user;
+        setSuccess("Successfully login With Github");
+        toast.success("Successfully login With Github");
+        setError("");
+      })
+      .catch((err) => {
+        setError(err.message);
+        toast.error(err.message);
         setSuccess("");
       });
   };
@@ -63,7 +80,7 @@ const Login = () => {
         backgroundImage: `url(https://i.ibb.co/DKS8v23/pexels-photo-1765005.webp)`,
       }}
     >
-      <div className="w-[95%] p-5 max-w-md bg-blue-400 bg-opacity-[0.5] rounded-2xl card-shadow">
+      <div className="w-full p-5 max-w-md bg-blue-400 bg-opacity-[0.5] sm:rounded-2xl card-shadow">
         <h2 className="text-center text-white text-2xl sm:text-3xl font-semibold mb-5 sm:mb-7">
           Sign In
         </h2>
@@ -133,7 +150,10 @@ const Login = () => {
             >
               <FaGoogle className="mr-2" title="Google" /> Google
             </button>
-            <button className="social-btn btn-info">
+            <button
+              onClick={handleGithubSignIn}
+              className="social-btn btn-info"
+            >
               <FaGithub className="mr-2" title="Twitter" /> Github
             </button>
           </div>

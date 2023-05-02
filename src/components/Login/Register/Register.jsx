@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -32,6 +33,8 @@ const Register = () => {
       return;
     }
 
+    setError("");
+    setSuccess("");
     // create user by email and password
     createUser(email, password)
       .then((result) => {
@@ -41,6 +44,7 @@ const Register = () => {
         toast.success("User has been created successfully");
         setError("");
         form.reset();
+        updateUserData(createdUser, name, photo);
         navigate("/login");
       })
       .catch((err) => {
@@ -51,6 +55,21 @@ const Register = () => {
       });
 
     console.log(name, email, photo, password);
+  };
+
+  const updateUserData = (user, name, photo) => {
+    updateProfile(user, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {
+        console.log("user profile updated");
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setError(err.message);
+        toast.error(err.message);
+      });
   };
 
   return (

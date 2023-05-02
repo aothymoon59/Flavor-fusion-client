@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   return (
     <div className="border-b-2 bg-base-100">
       <div className="navbar container mx-auto p-5">
@@ -81,13 +93,39 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
-          <Link
-            to="/login"
-            className="my-btn hover:bg-transparent transition-colors duration-200 ease-in-out"
-          >
-            Login
-          </Link>
+        <div className="navbar-end flex gap-2">
+          {user && (
+            <div>
+              {user.photoURL ? (
+                <img
+                  src={user?.photoURL}
+                  className="w-10 h-10 sm:w-14 sm:h-14 rounded-[50%] border-2 border-yellow-400 object-cover object-center"
+                  alt={user?.displayName}
+                  title={user?.displayName || "Anonymous User"}
+                />
+              ) : (
+                <FaUserCircle className="w-10 h-10 sm:w-14 sm:h-14 border-2 border-yellow-400" />
+              )}
+            </div>
+          )}
+
+          <div>
+            {user ? (
+              <Link
+                onClick={handleLogOut}
+                className="my-btn hover:bg-transparent transition-colors duration-200 ease-in-out"
+              >
+                LogOut
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="my-btn hover:bg-transparent transition-colors duration-200 ease-in-out"
+              >
+                Login
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>
