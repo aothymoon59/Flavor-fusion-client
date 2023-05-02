@@ -24,12 +24,15 @@ const Register = () => {
     // password validation
     if (password.length < 6) {
       setError("Password must be at least 6 characters long");
+      form.password.focus();
       return;
     } else if (!/(?=.*[A-Z])/.test(password)) {
       setError("Password must contain at least one uppercase");
+      form.password.focus();
       return;
     } else if (!/(?=.*[!@#$&*])/.test(password)) {
       setError("Password must contain at least one special character");
+      form.password.focus();
       return;
     }
 

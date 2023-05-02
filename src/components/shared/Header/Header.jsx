@@ -104,7 +104,10 @@ const Header = () => {
                   title={user?.displayName || "Anonymous User"}
                 />
               ) : (
-                <FaUserCircle className="w-10 h-10 sm:w-14 sm:h-14 border-2 border-yellow-400" />
+                <FaUserCircle
+                  className="w-10 h-10 sm:w-14 sm:h-14"
+                  title={user?.displayName || "Anonymous User"}
+                />
               )}
             </div>
           )}
