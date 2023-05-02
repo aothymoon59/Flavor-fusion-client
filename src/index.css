@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .active {
-    @apply font-medium tracking-wide text-[#ff4a52] bg-white
+    @apply font-medium tracking-wide text-[#FACC15] bg-white
 }
 
 .default {
@@ -11,5 +11,30 @@
 }
 
 .my-btn {
-    @apply bg-[#ff4a52] py-3 px-6 rounded-[45px] font-semibold text-white
+    @apply bg-yellow-400 text-[#913737] py-3 px-6 rounded-[45px] font-semibold border-2 border-yellow-400
+}
+
+.social-btn {
+    @apply btn btn-outline capitalize w-full text-lg transition-colors duration-200 ease-in-out
+}
+
+.card-shadow {
+    box-shadow: 0px 1px 23px 4px rgba(0, 0, 0, 0.7);
+}
+
+.form-btn {
+    background-color: #FACC15;
+    font-weight: 600;
+    color: #913737;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;
+}
+
+.form-btn:hover {
+    background-color: white;
+    color: #913737;
 }

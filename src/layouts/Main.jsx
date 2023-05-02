@@ -5,9 +5,9 @@ import Footer from "../components/shared/Footer/Footer";
 
 const Main = () => {
   return (
-    <div className="">
+    <div>
       <Header></Header>
-      <div className="min-h-[calc(100vh-64px)]">
+      <div className="min-h-[calc(100vh-76px)]">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>
