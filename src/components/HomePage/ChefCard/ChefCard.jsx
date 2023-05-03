@@ -42,7 +42,7 @@ const ChefCard = ({ chef }) => {
       </div>
 
       <Link
-        to="/"
+        to={`/chef-recipe/${id}`}
         className="my-btn hover:bg-transparent w-fit transition-colors duration-200 ease-in-out mb-5 mx-3 md:mx-5"
       >
         View Recipes
