@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <div className="border-b-2 bg-base-100">
-      <div className="navbar container mx-auto p-5">
+      <div className="navbar container mx-auto p-3 sm:p-5">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -99,7 +99,7 @@ const Header = () => {
               {user.photoURL ? (
                 <img
                   src={user?.photoURL}
-                  className="w-10 h-10 sm:w-14 sm:h-14 rounded-[50%] border-2 border-yellow-400 object-cover object-center"
+                  className="w-10 h-10 sm:w-14 sm:h-14 rounded-[50%] border-2 border-[#FACC15] object-cover object-center"
                   alt={user?.displayName}
                   title={user?.displayName || "Anonymous User"}
                 />

@@ -4,7 +4,7 @@ import Chefs from "../Chefs/Chefs";
 
 const Home = () => {
   return (
-    <div className="container mx-auto px-5">
+    <div className="container mx-auto px-3 sm:px-5">
       <HomeBanner></HomeBanner>
       <Chefs></Chefs>
     </div>

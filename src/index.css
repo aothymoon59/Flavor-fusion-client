@@ -15,7 +15,7 @@
 }
 
 .my-btn {
-    @apply bg-yellow-400 text-[#1d4ed8] py-3 px-6 rounded-[45px] font-semibold border-2 border-yellow-400
+    @apply bg-yellow-400 text-[#1d4ed8] py-3 px-6 rounded-[45px] font-semibold border-2 border-[#FACC15]
 }
 
 .social-btn {
@@ -41,4 +41,13 @@
 .form-btn:hover {
     background-color: white;
     color: #1d4ed8;
+}
+
+.recipe-img {
+    transform: scale(1);
+    transition: all .25s linear;
+}
+
+.recipe-img:hover {
+    transform: scale(1.1);
 }
