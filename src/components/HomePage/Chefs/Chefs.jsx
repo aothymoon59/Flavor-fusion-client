@@ -10,7 +10,6 @@ const Chefs = () => {
       .then((res) => res.json())
       .then((data) => setChefs(data));
   }, []);
-  console.log(chefs);
   return (
     <div className="pt-16 sm:pt-24">
       <div className="text-left border-l-4 border-[#1d4ed8] pl-3 mb-16">

@@ -24,8 +24,8 @@ const RecipeCard = ({ recipe }) => {
         <h2 className="card-title text-3xl">{recipeName}</h2>
         <p className="font-bold text-lg">Ingredients:</p>
         <ul className="grid grid-cols-2 list-disc">
-          {ingredients?.map((ingredient) => (
-            <li>{ingredient}</li>
+          {ingredients?.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
           ))}
         </ul>
         <p>

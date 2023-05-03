@@ -15,7 +15,6 @@ const ChefRecepies = () => {
       .then((res) => res.json())
       .then((data) => setChef(data));
   }, []);
-  console.log(chef);
 
   const {
     chefPicture,
@@ -26,27 +25,25 @@ const ChefRecepies = () => {
     yearsOfExperience,
   } = chef;
 
-  console.log(chefRecipe);
   return (
     <div className="container mx-auto px-5">
       <div
-        className=" min-h-[calc(100vh-88px)] bg-[#000000] bg-opacity-[0.4] bg-blend-multiply bg-cover bg-center flex flex-col-reverse md:flex-row justify-center gap-10 md:gap-5 items-center px-3"
+        className=" min-h-[calc(100vh-88px)] bg-[#000000] bg-opacity-[0.4] bg-blend-multiply bg-cover bg-center flex flex-col-reverse lg:flex-row justify-center gap-10 md:gap-5 items-center px-3"
         style={{
           backgroundImage: `url(https://i.ibb.co/fvgtJGX/recipe-banner-1.jpg)`,
         }}
       >
-        <div className="banner-text md:w-[50%] leading-5 bg-white bg-opacity-[0.7] rounded-2xl shadow-2xl p-10">
+        <div className="banner-text lg:w-[50%] mb-5 leading-5 bg-white bg-opacity-[0.5] lg:bg-opacity-[0.7] rounded-2xl shadow-2xl p-10">
           <small className="text-[#1d4ed8] font-bold text-sm">
             Hi! This is
           </small>
-          <h2 className="card-title mb-3 text-4xl md:text-6xl">
+          <h2 className="card-title mb-3 text-2xl sm:text-3xl lg:text-5xl">
             {chefName}
             <div className="text-[#1d4ed8]">
-              <FaCheckCircle />
+              <FaCheckCircle className="text-xl sm:text-2xl md:text-4xl" />
             </div>
           </h2>
-          {/* <h2 className="font-bold text-4xl md:text-6xl">{chefName}</h2> */}
-          <p className="text-lg">{bio}</p>
+          <p className="text-lg font-medium">{bio}</p>
           <div className="card-actions my-3">
             <div className="badge badge-outline font-medium p-3">
               Experience: {yearsOfExperience} years
@@ -59,7 +56,7 @@ const ChefRecepies = () => {
             <FaHeart className="text-[#1d4ed8]" /> {likes} likes
           </p>
         </div>
-        <div className="banner-img md:w-[50%] flex justify-center items-center">
+        <div className="banner-img lg:w-[50%] mt-5 flex justify-center items-center">
           <img
             className="w-[250px] h-[250px] sm:h-[450px] sm:w-[450px] border-2 border-[#FACC15] rounded-[50%] object-cover"
             src={chefPicture}

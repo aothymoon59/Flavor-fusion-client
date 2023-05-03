@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Differences between uncontrolled and controlled components.?",
+    "answer": " Controlled Components are those in which forms data is handled by the components state. It takes its current value through props and makes changes through callbacks like onClick, onChange, etc. A parent component manages its own state and passes the new values as props to the controlled component. Uncontrolled Components are the components that are not controlled by the React state and are handled by the DOM. So in order to access any value that has been entered we take the help of refs.",
+    "img": "https://i.ibb.co/8xPw3Sy/q1.png"
+  },
+  {
+    "question": "How to validate React props using PropTypes?",
+    "answer": "Props are an important for passing the readonly attributes to React components. The props are usually required to use correctly in the component. If it is not used correctly, the components may not behave as expected. It is required to use props validation in improving react components.Props validation is a tool that will help the developers to avoid future bugs and problems. It is a useful way to force the correct usage of our components. It makes our code more readable. React components used special property PropTypes that help us to catch bugs by validating data types of values passed through props, although it is not necessary to define components with propTypes. However, if we use propTypes with our components, it helps us to avoid unexpected bugs",
+    "img": "https://i.ibb.co/ggVk3yp/q2.jpg"
+  },
+  {
+    "question": "Difference between nodejs and express js?",
+    "answer": "Node.js is an open source and cross-platform runtime environment for executing JavaScript code outside of a browser. We need to remember that NodeJS is not a framework and its not a programming language.Express is a small framework that sits on top of Node.js web server functionality to simplify its APIs and add helpful new features. It makes it easier to organize your applications functionality with middle ware and routing.",
+    "img": "https://i.ibb.co/0BTr7FT/q3.png"
+  },
+  {
+    "question": "What is a custom hook, and why will you create a custom hook?",
+    "answer": "Custom Hooks are functions. Usually, they start with the word 'use'.In React component, a custom Hook does not need to have a specific signature. We can decide what it takes as arguments, and what, if anything, it should return. In other words, it's just like a normal function.We create custom hooks to improve the readability of the code",
+    "img": "https://i.ibb.co/PYmQ7Qn/customhook.png"
+  }
+]
