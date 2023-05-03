@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 .active {
     @apply font-medium tracking-wide text-[#FACC15] bg-white
 }

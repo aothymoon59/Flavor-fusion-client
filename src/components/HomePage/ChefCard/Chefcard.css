@@ -1,0 +1,8 @@
+.chef-img {
+    transform: scale(1) rotate(0);
+    transition: all .25s linear;
+}
+
+.chef-img:hover {
+    transform: scale(1.1) rotate(0);
+}
