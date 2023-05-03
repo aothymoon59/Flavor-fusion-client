@@ -24,10 +24,16 @@ const Blog = () => {
         }}
         className="h-[70vh] flex justify-center items-center bg-[#000000] bg-opacity-[0.5] bg-blend-multiply bg-cover bg-center"
       >
-        <h2 className="font-extrabold text-[32px] text-[#1A1919]">Blogs</h2>
+        <h2 className="font-extrabold text-[32px] text-[#FACC15]">Blogs</h2>
       </div>
 
       <div className="py-16 sm:py-24">
+        <div className="text-left border-l-4 border-[#1d4ed8] pl-3 mb-16">
+          <h2 className="font-bold text-2xl sm:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <p className="font-medium text-lg mt-2 text-[#1d4ed8]">Blogs</p>
+        </div>
         <div>
           <Pdf
             targetRef={ref}

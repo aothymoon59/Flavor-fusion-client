@@ -2,6 +2,7 @@ import React from "react";
 import { FaCheckCircle, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Chefcard.css";
+import LazyLoad from "react-lazy-load";
 
 const ChefCard = ({ chef }) => {
   const {
@@ -15,11 +16,13 @@ const ChefCard = ({ chef }) => {
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure className="h-[60%]">
-        <img
-          className="chef-img w-full h-full"
-          src={chef.chefPicture}
-          alt={chefName}
-        />
+        <LazyLoad height={`100%`} offset={300}>
+          <img
+            className="chef-img w-full h-full"
+            src={chef.chefPicture}
+            alt={chefName}
+          />
+        </LazyLoad>
       </figure>
       <div className="card-body px-3 pb-3 md:px-5">
         <h2 className="card-title mb-3">
