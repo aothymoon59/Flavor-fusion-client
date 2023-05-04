@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import { FaHeart } from "react-icons/fa";
+import { FaClock, FaHeart } from "react-icons/fa";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import toast from "react-hot-toast";
 
 const RecipeCard = ({ recipe }) => {
-  const { id, recipeImage, recipeName, ingredients, cookingMethod, rating } =
-    recipe;
+  const {
+    id,
+    recipeImage,
+    recipeName,
+    ingredients,
+    cookingTime,
+    cookingMethod,
+    rating,
+  } = recipe;
   const [btnDisable, setBtnDisable] = useState(false);
   const handleFavorite = () => {
     setBtnDisable(true);
@@ -28,6 +35,9 @@ const RecipeCard = ({ recipe }) => {
             <li key={index}>{ingredient}</li>
           ))}
         </ul>
+        <div className="font-bold text-lg flex items-center gap-2">
+          <FaClock /> <span>{cookingTime} min</span>
+        </div>
         <p>
           <span className="font-bold text-lg">Cooking method: </span>
           {cookingMethod}

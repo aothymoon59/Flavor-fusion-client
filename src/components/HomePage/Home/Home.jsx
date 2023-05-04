@@ -2,6 +2,7 @@ import React from "react";
 import HomeBanner from "../Banner/HomeBanner";
 import Chefs from "../Chefs/Chefs";
 import Categories from "../BrowseCategories/Categories/Categories";
+import FeaturedRecipes from "../FeaturedSection/Featured Recipes/FeaturedRecipes";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <HomeBanner></HomeBanner>
       <Chefs></Chefs>
       <Categories></Categories>
+      <FeaturedRecipes></FeaturedRecipes>
     </div>
   );
 };

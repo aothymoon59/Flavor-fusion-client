@@ -30,9 +30,11 @@ const Blog = () => {
       <div className="py-16 sm:py-24">
         <div className="text-left border-l-4 border-[#1d4ed8] pl-3 mb-16">
           <h2 className="font-bold text-2xl sm:text-4xl">
-            Frequently Asked Questions
+            Fun and Interesting Reads
           </h2>
-          <p className="font-medium text-lg mt-2 text-[#1d4ed8]">Blogs</p>
+          <p className="font-medium text-lg mt-2 text-[#1d4ed8]">
+            Curious Insights
+          </p>
         </div>
         <div>
           <Pdf
@@ -49,7 +51,7 @@ const Blog = () => {
                   className="my-btn hover:bg-transparent transition-colors duration-200 ease-in-out"
                   onClick={toPdf}
                 >
-                  Generate Pdf
+                  Download PDF
                 </button>
               </div>
             )}
