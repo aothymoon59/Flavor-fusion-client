@@ -13,7 +13,7 @@ const NewsLetter = () => {
         <h2 className="font-bold text-white text-3xl sm:text-4xl">
           Subscribe to Our Newsletter
         </h2>
-        <p className="font-medium text-lg mt-2 text-[#FACC15]">
+        <p className="font-medium text-lg mx-2 mt-2 text-[#FACC15]">
           Get access to our latest recipes by joining the weekly news letter
         </p>
       </div>
