@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
+import { Grid, InfinitySpin } from "react-loader-spinner";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, loading } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
