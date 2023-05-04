@@ -3,6 +3,7 @@ import HomeBanner from "../Banner/HomeBanner";
 import Chefs from "../Chefs/Chefs";
 import Categories from "../BrowseCategories/Categories/Categories";
 import FeaturedRecipes from "../FeaturedSection/Featured Recipes/FeaturedRecipes";
+import NewsLetter from "../NewsLetter/NewsLetter";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Chefs></Chefs>
       <Categories></Categories>
       <FeaturedRecipes></FeaturedRecipes>
+      <NewsLetter></NewsLetter>
     </div>
   );
 };
