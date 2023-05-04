@@ -33,7 +33,7 @@ const ChefRecepies = () => {
           backgroundImage: `url(https://i.ibb.co/fvgtJGX/recipe-banner-1.jpg)`,
         }}
       >
-        <div className="banner-text lg:w-[50%] mb-5 leading-5 bg-white bg-opacity-[0.5] lg:bg-opacity-[0.7] rounded-2xl shadow-2xl p-10">
+        <div className="banner-text lg:w-[50%] mb-5 lg:mb-0 leading-5 bg-white bg-opacity-[0.5] lg:bg-opacity-[0.7] rounded-2xl shadow-2xl p-10">
           <small className="text-[#1d4ed8] font-bold text-sm">
             Hi! This is
           </small>
@@ -56,7 +56,7 @@ const ChefRecepies = () => {
             <FaHeart className="text-[#1d4ed8]" /> {likes} likes
           </p>
         </div>
-        <div className="banner-img lg:w-[50%] mt-5 flex justify-center items-center">
+        <div className="banner-img lg:w-[50%] mt-5 lg:mt-0 flex justify-center items-center">
           <img
             className="w-[250px] h-[250px] sm:h-[450px] sm:w-[450px] border-2 border-[#FACC15] rounded-[50%] object-cover"
             src={chefPicture}

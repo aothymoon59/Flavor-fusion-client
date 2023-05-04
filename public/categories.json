@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "category_icon": "https://i.ibb.co/hsKrJWT/breakfast.png",
+    "category_name": "Breakfast",
+    "num_recipes": 12
+  },
+  {
+    "id": 2,
+    "category_icon": "https://i.ibb.co/BG0LQMn/lunch.png",
+    "category_name": "Lunch",
+    "num_recipes": 20
+  },
+  {
+    "id": 3,
+    "category_icon": "https://i.ibb.co/ngLcbgV/dinner.png",
+    "category_name": "Dinner",
+    "num_recipes": 18
+  },
+  {
+    "id": 4,
+    "category_icon": "https://i.ibb.co/SnpY6JT/desserts.png",
+    "category_name": "Desserts",
+    "num_recipes": 15
+  },
+  {
+    "id": 5,
+    "category_icon": "https://i.ibb.co/Nj3k4P9/drinks.png",
+    "category_name": "Drinks",
+    "num_recipes": 8
+  },
+  {
+    "id": 6,
+    "category_icon": "https://i.ibb.co/9cN6mcN/appetizer.png",
+    "category_name": "Appetizers",
+    "num_recipes": 10
+  },
+  {
+    "id": 7,
+    "category_icon": "https://i.ibb.co/d5GZwS4/salad.png",
+    "category_name": "Salads",
+    "num_recipes": 7
+  },
+  {
+    "id": 8,
+    "category_icon": "https://i.ibb.co/c1nPYcH/timing.png",
+    "category_name": "Quick Foods",
+    "num_recipes": 6
+  }
+]
