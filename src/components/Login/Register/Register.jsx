@@ -9,7 +9,7 @@ const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
   // Handle registration
@@ -49,6 +49,7 @@ const Register = () => {
         form.reset();
         updateUserData(createdUser, name, photo);
         navigate("/login");
+        handleSignOutAfterReg();
       })
       .catch((err) => {
         console.log(err.message);
@@ -58,6 +59,14 @@ const Register = () => {
       });
 
     console.log(name, email, photo, password);
+  };
+
+  const handleSignOutAfterReg = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   const updateUserData = (user, name, photo) => {

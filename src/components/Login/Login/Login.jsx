@@ -24,10 +24,8 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         form.reset();
         setSuccess("Successfully login");
-        console.log(loggedUser);
         toast.success("Successfully login");
         setError("");
         navigate(from, { replace: true });
@@ -54,9 +52,11 @@ const Login = () => {
         setSuccess("Successfully login With Google");
         toast.success("Successfully login With Google");
         setError("");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         setError(err.message);
+        console.log(errorMessage);
         toast.error(err.message);
         setSuccess("");
       });
@@ -69,9 +69,11 @@ const Login = () => {
         setSuccess("Successfully login With Github");
         toast.success("Successfully login With Github");
         setError("");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         setError(err.message);
+        console.log(errorMessage);
         toast.error(err.message);
         setSuccess("");
       });
