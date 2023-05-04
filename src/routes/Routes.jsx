@@ -6,6 +6,7 @@ import Login from "../components/Login/Login/Login";
 import Register from "../components/Login/Register/Register";
 import ChefRecepies from "../components/ChefRecipes/ChefRecepies/ChefRecepies";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/chef-recipe/:id",
-        element: <ChefRecepies></ChefRecepies>,
+        element: (
+          <PrivateRoute>
+            <ChefRecepies></ChefRecepies>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/chef-recipes/${params.id}`
