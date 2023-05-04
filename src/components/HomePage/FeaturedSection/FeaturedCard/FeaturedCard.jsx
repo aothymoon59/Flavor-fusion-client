@@ -11,7 +11,7 @@ const FeaturedCard = ({ recipe }) => {
   return (
     <div className="card w-full bg-base-100 shadow-xl image-full opacity-100">
       <figure>
-        <LazyLoad height={`100%`} width={`100%`} offset={50}>
+        <LazyLoad height={`100%`} width={`100%`} offset={300}>
           <img src={recipeImage} alt={recipeName} />
         </LazyLoad>
       </figure>
