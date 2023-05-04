@@ -63,6 +63,30 @@ const Header = () => {
                   Blog
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  aria-label="About"
+                  title="About"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "default"
+                  }
+                >
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  aria-label="Contact"
+                  title="Contact"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "default"
+                  }
+                >
+                  Contact
+                </NavLink>
+              </li>
             </ul>
           </div>
           <Link className="normal-case font-semibold text-xl sm:text-2xl p-0">
@@ -89,6 +113,26 @@ const Header = () => {
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
                 Blog
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                aria-label="About"
+                title="About"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact"
+                aria-label="Contact"
+                title="Contact"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Contact
               </NavLink>
             </li>
           </ul>

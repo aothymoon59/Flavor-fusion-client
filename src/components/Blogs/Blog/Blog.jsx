@@ -20,9 +20,9 @@ const Blog = () => {
     <div className="container mx-auto px-3 sm:px-5">
       <div
         style={{
-          backgroundImage: `url(https://i.ibb.co/r0fzxqV/blog-banner.jpg)`,
+          backgroundImage: `url(https://i.ibb.co/279ZRRB/about-banner.jpg)`,
         }}
-        className="h-[70vh] flex justify-center items-center bg-[#000000] bg-opacity-[0.5] bg-blend-multiply bg-cover bg-center"
+        className="h-[50vh] flex justify-center items-center bg-[#000000] bg-opacity-[0.5] bg-blend-multiply bg-cover bg-center"
       >
         <h2 className="font-extrabold text-[32px] text-[#FACC15]">Blogs</h2>
       </div>
