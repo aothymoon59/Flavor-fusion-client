@@ -61,6 +61,7 @@ const Register = () => {
     console.log(name, email, photo, password);
   };
 
+  // control sign in after register
   const handleSignOutAfterReg = () => {
     logOut()
       .then(() => {})
@@ -69,6 +70,7 @@ const Register = () => {
       });
   };
 
+  // update user  name and photo
   const updateUserData = (user, name, photo) => {
     updateProfile(user, {
       displayName: name,

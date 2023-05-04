@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
-import { Grid, InfinitySpin } from "react-loader-spinner";
 
 const Header = () => {
-  const { user, logOut, loading } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
@@ -66,7 +65,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-xl sm:text-2xl p-0">
+          <Link className="normal-case font-semibold text-xl sm:text-2xl p-0">
             Flavor Fusion
           </Link>
         </div>

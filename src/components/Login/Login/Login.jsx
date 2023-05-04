@@ -1,15 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import toast from "react-hot-toast";
+import { HiMailOpen } from "react-icons/hi";
 
 const Login = () => {
-  const { signIn, signInWithGoogle, signInWithGithub } =
+  const { signIn, signInWithGoogle, signInWithGithub, resetPassword } =
     useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const emailRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -79,6 +81,28 @@ const Login = () => {
       });
   };
 
+  // password reset here
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+
+    resetPassword(email)
+      .then(() => {
+        toast("Please check your email for reset password", {
+          icon: <HiMailOpen />,
+        });
+      })
+      .catch((err) => {
+        let errorMessage = err.message;
+        if (errorMessage == "Firebase: Error (auth/missing-email).") {
+          errorMessage = "Please provide email address";
+        }
+        console.log(errorMessage);
+        setError(errorMessage);
+        toast.error(errorMessage);
+      });
+  };
+
   return (
     <div
       className=" min-h-screen bg-[#000000] bg-opacity-[0.7] bg-blend-multiply bg-cover bg-center flex justify-center items-center"
@@ -102,6 +126,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
+              ref={emailRef}
               placeholder="Your email"
               className="input input-bordered w-full"
               required
@@ -125,7 +150,10 @@ const Login = () => {
               <small>{showPass ? <FaEye /> : <FaEyeSlash />}</small>
             </p>
             <p className="p-1 text-sm">
-              <Link className="underline text-error font-medium">
+              <Link
+                onClick={handleResetPassword}
+                className="underline text-error font-medium"
+              >
                 Forgotten Password?
               </Link>
             </p>
