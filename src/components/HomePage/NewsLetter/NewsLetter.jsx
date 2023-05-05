@@ -17,7 +17,6 @@ const NewsLetter = () => {
       )
       .then(
         (result) => {
-          console.log(result);
           toast.success("Subscribe successfully");
           e.target.reset();
         },

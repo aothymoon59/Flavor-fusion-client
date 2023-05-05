@@ -42,7 +42,6 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser);
         setSuccess("User has been created successfully");
         toast.success("User has been created successfully");
         setError("");
@@ -57,8 +56,6 @@ const Register = () => {
         setSuccess("");
         toast.error(err.message);
       });
-
-    console.log(name, email, photo, password);
   };
 
   // control sign in after register
@@ -76,9 +73,7 @@ const Register = () => {
       displayName: name,
       photoURL: photo,
     })
-      .then(() => {
-        console.log("user profile updated");
-      })
+      .then(() => {})
       .catch((err) => {
         console.log(err.message);
         setError(err.message);

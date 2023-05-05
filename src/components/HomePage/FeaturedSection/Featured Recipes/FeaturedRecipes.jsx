@@ -7,11 +7,18 @@ const FeaturedRecipes = () => {
   const [newRecipe, setNewRecipe] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/recipes`
-    )
-      .then((res) => res.json())
-      .then((data) => setRecipes(data));
+    const fetchRecipes = async () => {
+      try {
+        const response = await fetch(
+          "https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/recipes"
+        );
+        const data = await response.json();
+        setRecipes(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchRecipes();
   }, []);
 
   useEffect(() => {

@@ -9,6 +9,7 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import About from "../components/AboutUs/About";
 import Contact from "../components/Contact/Contact";
+import UserDetails from "../components/UserDetails/UserDetails";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/user",
+        element: (
+          <PrivateRoute>
+            <UserDetails></UserDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

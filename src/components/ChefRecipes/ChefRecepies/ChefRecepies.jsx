@@ -9,13 +9,20 @@ const ChefRecepies = () => {
   const chefRecipe = useLoaderData();
 
   useEffect(() => {
-    const chef_id = chefRecipe[0]?.chef_id;
-    fetch(
-      `https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/chefs/${chef_id}`
-    )
-      .then((res) => res.json())
-      .then((data) => setChef(data));
-  }, []);
+    const fetchChef = async () => {
+      try {
+        const chef_id = chefRecipe[0]?.chef_id;
+        const response = await fetch(
+          `https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/chefs/${chef_id}`
+        );
+        const data = await response.json();
+        setChef(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchChef();
+  }, [chefRecipe]);
 
   const {
     chefPicture,

@@ -3,13 +3,22 @@ import ChefCard from "../ChefCard/ChefCard";
 
 const Chefs = () => {
   const [chefs, setChefs] = useState([]);
+
   useEffect(() => {
-    fetch(
-      "https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/chefs"
-    )
-      .then((res) => res.json())
-      .then((data) => setChefs(data));
+    const fetchChefs = async () => {
+      try {
+        const response = await fetch(
+          "https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/chefs"
+        );
+        const data = await response.json();
+        setChefs(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchChefs();
   }, []);
+
   return (
     <div className="pt-16 sm:pt-24">
       <div className="text-left border-l-4 border-[#1d4ed8] pl-3 mb-16">

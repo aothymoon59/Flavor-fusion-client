@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import { FaUserCircle, FaSun, FaHeart } from "react-icons/fa";
+import { FaUserCircle, FaSun, FaMoon } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -151,24 +151,6 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end flex gap-2">
-          {user && (
-            <div>
-              {user?.photoURL ? (
-                <img
-                  src={user?.photoURL}
-                  className="w-6 h-6 sm:w-14 sm:h-14 rounded-[50%] border-2 border-[#FACC15] object-cover object-center"
-                  alt={user?.displayName}
-                  title={user?.displayName || "Anonymous User"}
-                />
-              ) : (
-                <FaUserCircle
-                  className="w-6 h-6 sm:w-14 sm:h-14"
-                  title={user?.displayName || "Anonymous User"}
-                />
-              )}
-            </div>
-          )}
-
           <div>
             {user ? (
               <Link
@@ -186,13 +168,31 @@ const Header = () => {
               </Link>
             )}
           </div>
+          {user && (
+            <div
+              className="tooltip tooltip-left"
+              data-tip={user?.displayName || "Anonymous User"}
+            >
+              <Link to="/user">
+                {user?.photoURL ? (
+                  <img
+                    src={user?.photoURL}
+                    className="w-8 h-8 sm:w-12 sm:h-12 rounded-[50%] border-2 border-[#FACC15] object-cover object-center"
+                    alt={user?.displayName}
+                  />
+                ) : (
+                  <FaUserCircle className="w-8 h-8 sm:w-12 sm:h-12" />
+                )}
+              </Link>
+            </div>
+          )}
           <div>
             <button
               className="w-7 h-7 sm:w-10 sm:h-10 text-lg flex justify-center items-center rounded-[50%] bg-[#a4b9f2]"
               onClick={handleToggleTheme}
               title={themeIcon ? "Light" : "Valentine"}
             >
-              {themeIcon ? <FaSun /> : <FaHeart />}
+              {themeIcon ? <FaSun /> : <FaMoon />}
             </button>
           </div>
         </div>
