@@ -52,6 +52,7 @@ const NewsLetter = () => {
           name="user_email"
           placeholder="Enter your email address"
           className="input input-bordered mx-2 w-full max-w-xs"
+          required
         />
         <button
           type="submit"

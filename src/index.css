@@ -7,11 +7,11 @@
 }
 
 .active {
-    @apply font-medium tracking-wide text-[#FACC15] bg-white
+    @apply font-medium tracking-wide text-[#FACC15] bg-transparent
 }
 
 .default {
-    @apply font-medium tracking-wide text-black bg-white
+    @apply font-medium tracking-wide text-black bg-transparent
 }
 
 .my-btn {

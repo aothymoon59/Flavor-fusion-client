@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaSun, FaHeart } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -13,6 +13,21 @@ const Header = () => {
         console.log(err.message);
       });
   };
+
+  // theme toggle
+  const [theme, setTheme] = useState("light");
+  const [themeIcon, setThemeIcon] = useState(true);
+
+  const handleToggleTheme = () => {
+    setTheme(theme === "light" ? "valentine" : "light");
+    setThemeIcon(!themeIcon);
+  };
+
+  console.log(themeIcon);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
     <div className="border-b-2 bg-base-100">
@@ -140,7 +155,7 @@ const Header = () => {
         <div className="navbar-end flex gap-2">
           {user && (
             <div>
-              {user.photoURL ? (
+              {user?.photoURL ? (
                 <img
                   src={user?.photoURL}
                   className="w-10 h-10 sm:w-14 sm:h-14 rounded-[50%] border-2 border-[#FACC15] object-cover object-center"
@@ -172,6 +187,15 @@ const Header = () => {
                 Login
               </Link>
             )}
+          </div>
+          <div>
+            <button
+              className="w-[40px] h-[40px] text-lg flex justify-center items-center rounded-[50%] bg-[#a4b9f2]"
+              onClick={handleToggleTheme}
+              title={themeIcon ? "Light" : "Valentine"}
+            >
+              {themeIcon ? <FaSun /> : <FaHeart />}
+            </button>
           </div>
         </div>
       </div>
