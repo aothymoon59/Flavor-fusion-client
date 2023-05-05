@@ -7,7 +7,7 @@
 }
 
 .active {
-    @apply font-medium tracking-wide text-[#FACC15] bg-transparent
+    @apply font-medium tracking-wide text-[#1d4ed8] bg-transparent
 }
 
 .default {
@@ -15,7 +15,7 @@
 }
 
 .my-btn {
-    @apply bg-yellow-400 text-[#1d4ed8] py-3 px-6 rounded-[45px] font-semibold border-2 border-[#FACC15]
+    @apply bg-yellow-400 text-[#1d4ed8] py-3 px-3 rounded-[45px] font-semibold border-2 border-[#FACC15]
 }
 
 .social-btn {

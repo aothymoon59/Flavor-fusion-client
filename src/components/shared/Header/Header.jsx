@@ -23,8 +23,6 @@ const Header = () => {
     setThemeIcon(!themeIcon);
   };
 
-  console.log(themeIcon);
-
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -158,13 +156,13 @@ const Header = () => {
               {user?.photoURL ? (
                 <img
                   src={user?.photoURL}
-                  className="w-10 h-10 sm:w-14 sm:h-14 rounded-[50%] border-2 border-[#FACC15] object-cover object-center"
+                  className="w-6 h-6 sm:w-14 sm:h-14 rounded-[50%] border-2 border-[#FACC15] object-cover object-center"
                   alt={user?.displayName}
                   title={user?.displayName || "Anonymous User"}
                 />
               ) : (
                 <FaUserCircle
-                  className="w-10 h-10 sm:w-14 sm:h-14"
+                  className="w-6 h-6 sm:w-14 sm:h-14"
                   title={user?.displayName || "Anonymous User"}
                 />
               )}
@@ -190,7 +188,7 @@ const Header = () => {
           </div>
           <div>
             <button
-              className="w-[40px] h-[40px] text-lg flex justify-center items-center rounded-[50%] bg-[#a4b9f2]"
+              className="w-7 h-7 sm:w-10 sm:h-10 text-lg flex justify-center items-center rounded-[50%] bg-[#a4b9f2]"
               onClick={handleToggleTheme}
               title={themeIcon ? "Light" : "Valentine"}
             >
