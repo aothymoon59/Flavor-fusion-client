@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import { FaCheckCircle, FaHeart } from "react-icons/fa";
-import LazyLoad from "react-lazy-load";
 
 const ChefRecepies = () => {
   const [chef, setChef] = useState([]);
@@ -65,13 +64,11 @@ const ChefRecepies = () => {
           </p>
         </div>
         <div className="banner-img lg:w-[50%] mt-5 lg:mt-0 flex justify-center items-center">
-          <LazyLoad height={`100%`} width={`100%`} offset={300}>
-            <img
-              className="w-[250px] h-[250px] sm:h-[450px] sm:w-[450px] border-2 border-[#FACC15] rounded-[50%] object-cover"
-              src={chefPicture}
-              alt=""
-            />
-          </LazyLoad>
+          <img
+            className="w-[250px] h-[250px] sm:h-[450px] sm:w-[450px] border-2 border-[#FACC15] rounded-[50%] object-cover"
+            src={chefPicture}
+            alt=""
+          />
         </div>
       </div>
       <div className="py-16 sm:py-24">

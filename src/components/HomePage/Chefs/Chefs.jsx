@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ChefCard from "../ChefCard/ChefCard";
+import { ThreeCircles } from "react-loader-spinner";
 
 const Chefs = () => {
   const [chefs, setChefs] = useState([]);
+  const [loading, setLoading] = useState(true); // Initialize the loading state to true
 
   useEffect(() => {
     const fetchChefs = async () => {
@@ -12,12 +14,33 @@ const Chefs = () => {
         );
         const data = await response.json();
         setChefs(data);
+        setLoading(false); // Update the loading state when data is loaded
       } catch (error) {
         console.error(error);
       }
     };
     fetchChefs();
   }, []);
+
+  if (loading) {
+    // Return a loading indicator while data is loading
+    return (
+      <div className="flex items-center mt-10 justify-center h-[400px]">
+        <ThreeCircles
+          height="100"
+          width="100"
+          color="#1d4ed8"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="three-circles-rotating"
+          outerCircleColor=""
+          innerCircleColor=""
+          middleCircleColor=""
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="pt-16 sm:pt-24">
