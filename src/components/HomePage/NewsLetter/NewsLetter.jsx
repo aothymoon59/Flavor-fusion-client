@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FaRegPaperPlane } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const NewsLetter = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_8lznrlj",
+        "template_bj9cqq9",
+        form.current,
+        "W5Pw7Q1ZLOHg6b6H5"
+      )
+      .then(
+        (result) => {
+          console.log(result);
+          toast.success("Subscribe successfully");
+          e.target.reset();
+        },
+        (error) => {
+          console.log(error.text);
+          toast.error(error.text);
+        }
+      );
+  };
   return (
     <div
       className="py-12 sm:py-20 my-16 sm:my-24 bg-[#000000] bg-opacity-[0.6] bg-blend-multiply bg-cover bg-center rounded-lg"
@@ -17,9 +42,14 @@ const NewsLetter = () => {
           Get access to our latest recipes by joining the weekly news letter
         </p>
       </div>
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-center items-center">
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="flex flex-col sm:flex-row gap-3 sm:gap-0 justify-center items-center"
+      >
         <input
           type="email"
+          name="user_email"
           placeholder="Enter your email address"
           className="input input-bordered mx-2 w-full max-w-xs"
         />
@@ -29,7 +59,7 @@ const NewsLetter = () => {
         >
           Submit <FaRegPaperPlane />
         </button>
-      </div>
+      </form>
     </div>
   );
 };
