@@ -88,7 +88,7 @@ const Login = () => {
 
     resetPassword(email)
       .then(() => {
-        toast("Please check your email for reset password", {
+        toast("Check your email for reset password", {
           icon: <HiMailOpen />,
         });
       })
@@ -188,7 +188,7 @@ const Login = () => {
               onClick={handleGithubSignIn}
               className="social-btn btn-info"
             >
-              <FaGithub className="mr-2" title="Twitter" /> Github
+              <FaGithub className="mr-2" title="github" /> Github
             </button>
           </div>
         </div>

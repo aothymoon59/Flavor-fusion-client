@@ -38,7 +38,7 @@ const FeaturedRecipes = () => {
 
   return (
     <div className="pt-16 sm:pt-24">
-      <div className="text-left border-l-4 border-[#1d4ed8] pl-3 mb-16">
+      <div className="text-right border-r-4 border-[#1d4ed8] pr-3 mb-16">
         <h2 className="font-bold text-3xl sm:text-4xl">Featured Recipes</h2>
         <p className="font-medium text-lg mt-2 text-[#1d4ed8]">
           Signature Dishes

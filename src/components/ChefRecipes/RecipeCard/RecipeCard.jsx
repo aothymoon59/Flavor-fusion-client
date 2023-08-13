@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 
 const RecipeCard = ({ recipe }) => {
   const {
-    id,
     recipeImage,
     recipeName,
     ingredients,
@@ -30,13 +29,13 @@ const RecipeCard = ({ recipe }) => {
       <div className="card-body">
         <h2 className="card-title text-3xl">{recipeName}</h2>
         <p className="font-bold text-lg">Ingredients:</p>
-        <ul className="grid grid-cols-2 list-disc">
+        <ul className="grid grid-cols-2 list-disc ml-4">
           {ingredients?.map((ingredient, index) => (
             <li key={index}>{ingredient}</li>
           ))}
         </ul>
         <div className="font-bold text-lg flex items-center gap-2">
-          <FaClock /> <span>{cookingTime} min</span>
+          <FaClock /> <span>{cookingTime} mins</span>
         </div>
         <p>
           <span className="font-bold text-lg">Cooking method: </span>
@@ -50,9 +49,8 @@ const RecipeCard = ({ recipe }) => {
           <button
             onClick={handleFavorite}
             disabled={btnDisable}
-            className={`flex items-center gap-2 cursor-pointer ${
-              btnDisable ? "text-gray-400" : "text-red-600"
-            }`}
+            className={`flex items-center gap-2 cursor-pointer ${btnDisable ? "text-gray-400" : "text-red-600"
+              }`}
           >
             <FaHeart /> Add to favorites
           </button>

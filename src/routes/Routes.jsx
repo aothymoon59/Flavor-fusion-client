@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import About from "../components/AboutUs/About";
 import Contact from "../components/Contact/Contact";
 import UserDetails from "../components/UserDetails/UserDetails";
+import FeatureCardDetails from "../components/HomePage/FeaturedSection/FeatureCardDetails/FeatureCardDetails";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,18 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(
             `https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/chef-recipes/${params.id}`
+          ),
+      },
+      {
+        path: "/featureDetails/:id",
+        element: (
+          <PrivateRoute>
+            <FeatureCardDetails></FeatureCardDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://b7a10-chef-recipe-hunter-client-side-aothymoon59-aothymoon59.vercel.app/recipes`
           ),
       },
     ],

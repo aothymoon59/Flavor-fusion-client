@@ -19,7 +19,7 @@ const FeaturedCard = ({ recipe }) => {
         <h2 className="card-title lg:text-2xl">{recipeName}</h2>
         <p>
           {cookingMethod.slice(0, 250)}...
-          <Link className="text-[#FACC15]" to="/">
+          <Link className="text-[#FACC15]" to={`/featureDetails/${id}`}>
             see more
           </Link>
         </p>
